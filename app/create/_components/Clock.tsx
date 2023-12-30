@@ -1,9 +1,9 @@
 import { useState } from "react";
 
 
-export default function Clock({defaultClockFormat = 24}) {
+export default function Clock({defaultClockFormat = 24, defaultClockColour = "#ff00ff"}) {
   const [clockFormat, setClockFormat] = useState(defaultClockFormat);
-  const [clockColour, setClockColour] = useState("#ff00ff");
+  const [clockColour, setClockColour] = useState(defaultClockColour);
 
   function handleColourChange(e) {
     setClockColour(e.target.value);
