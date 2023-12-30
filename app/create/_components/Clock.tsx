@@ -1,9 +1,9 @@
 import { useState } from "react";
 
 
-export default function Clock({defaultClockFormat = 24, defaultClockColour = "#ff00ff"}) {
-  const [clockFormat, setClockFormat] = useState(defaultClockFormat);
-  const [clockColour, setClockColour] = useState(defaultClockColour);
+export default function Clock({settings = {colour: "#ff00ff", format: "24"}}) {
+  const [clockFormat, setClockFormat] = useState(settings.format);
+  const [clockColour, setClockColour] = useState(settings.colour);
 
   function handleColourChange(e) {
     setClockColour(e.target.value);
@@ -31,7 +31,7 @@ export default function Clock({defaultClockFormat = 24, defaultClockColour = "#f
                 name="clockFormat" 
                 readOnly 
                 value="12" 
-                defaultChecked={clockFormat === 12 ? true : false}
+                defaultChecked={clockFormat === "12" ? true : false}
                 onChange={handleRadioChange}
               />12 hour
             </label>
@@ -41,7 +41,7 @@ export default function Clock({defaultClockFormat = 24, defaultClockColour = "#f
                 name="clockFormat" 
                 readOnly 
                 value="24" 
-                defaultChecked={clockFormat === 24 ? true : false} 
+                defaultChecked={clockFormat === "24" ? true : false} 
                 onChange={handleRadioChange}
               />24 hour
             </label>
