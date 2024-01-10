@@ -1,18 +1,18 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 
 
-export default function Clock({settings = {colour: "#ff00ff", format: "24"}}) {
+// This component sets a default value for the settings prop, but this is as a backup only.
+// Always expect the settings prop to be passed in.
+export default function Clock({settings = {colour: "#ff00ff", format: "24"}}): JSX.Element {
   const [clockFormat, setClockFormat] = useState(settings.format);
   const [clockColour, setClockColour] = useState(settings.colour);
 
-  function handleColourChange(e) {
+  const handleColourChange = (e: ChangeEvent<HTMLInputElement>): void => {
     setClockColour(e.target.value);
   }
 
-  // TODO: Add a function to handle the radio button change event
-  // Function should update a prop passed from the parent component
-  function handleRadioChange(e) {
-    console.log("Radio Event: ", e.target.value);
+  const handleRadioChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setClockFormat(e.target.value);
   }
 
   return (
